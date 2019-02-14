@@ -1,0 +1,173 @@
+* {
+  margin: 10px auto;
+  text-align: center;
+  font-family: trebuchet ms, arial;
+  user-select: none;
+}
+
+.clickable {
+  transition: opacity 180ms;
+}
+
+.clickable:hover {
+  opacity: 0.7;
+}
+
+@mixin container {
+  box-shadow: 0 0 8px 0px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+@each $k in A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,Y,U,V,W,X,Y,Z,start {
+  ##{$k} { grid-area: $k; }
+}
+
+
+
+h1 {
+  font-size: 56px;
+}
+
+#win-lose-screen {
+  @include container;
+  background: lightgreen;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  bottom: 20%;
+  left: 10%;
+  font-size: 48px;
+  box-shadow: 0 0 16px 2px rgba(0,0,0,0.3);
+  z-index: 1;
+}
+
+#scoreboard {
+  background: white;
+  display: flex;
+  width: 90%;
+  border-radius: 10px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+#play-again {
+  max-height: 120px;
+  max-width: 300px;
+  font-size: 48px;
+}
+
+#hangman {
+  @include container;
+  background: lightblue;
+  padding: 10px;
+  height: 400px;
+  width: 300px;
+}
+
+.strike {
+  background: black;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.strikeout {
+  opacity: 1;
+}
+
+#word {
+  @include container;
+  background: pink;
+  padding: 10px;
+  min-height: 100px;
+  min-width: 280px;
+  height: auto;
+  width: max-content;
+  font-size: 72px;
+}
+
+.letter {
+  display: inline-block;
+  margin: 10px;
+  width: 70px;
+  border-bottom: 8px solid black;
+}
+
+.letter-display {
+  opacity: 0;
+}
+
+.found-letter {
+  opacity: 1;
+}
+
+#keyboard {
+  @include container;
+  background: lightgreen;
+  display: grid;
+  grid-template-areas:
+    "Q Q . W W . E E . R R . T T . Y Y . U U . I I . O O . P P"
+    ". A A . S S . D D . F F . G G . H H . J J . K K . L L . ."
+    ". . Z Z . X X . C C . V V . B B . N N . M M . . . start start start start";
+  grid-gap: 5px;
+  padding: 20px 20px 40px 20px;
+  margin: 20px;
+  // width: 90vw;
+  height: 24vh;
+  font-size: 24px;
+}
+
+.key {
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: thin solid white;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.button {
+  @extend .key;
+}
+
+.start {
+  background: green;
+}
+
+#level-display {
+  @include container;
+  background: yellow;
+  display: flex;
+  padding: 10px 20px;
+  width: 90vw;
+  font-size: 48px;
+}
+
+.incrementer {
+  background: orange;
+  flex: 1;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#level {
+  background: white;
+  flex: 1;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.key, .incrementer, .button {
+  @extend .clickable;
+}
