@@ -1,5 +1,7 @@
 // VARIABLES
 const ALL_KEYS = [...document.getElementsByClassName("key")];
+const STRIKES = [...document.getElementsByClassName("strike")];
+const WORD = document.getElementById("word");
 const LEVELS = {0: "Easy", 1: "Medium", 2: "Hard", 3: "Very Hard"};
 const WORDS = {
   0: [
@@ -27,7 +29,12 @@ const WORDS = {
   ]
 };
 
-let level = 0;
+let level = 0,
+    word = "",
+    strike = 0,
+    score = 0,
+    win = 0,
+    loss = 0;
 
 
 
@@ -43,9 +50,13 @@ function renderLevel() {
 }
 
 function startGame() {
-  const WORD = generateNewWord().split("");
-  console.log(WORD);
-  WORD.map(L => createLetter(L));
+  document.getElementById("win-lose-screen").style.display = "none";
+  word = generateNewWord().split("");
+  strike = 0;
+  score = 0;
+  [...WORD.children].map(L => WORD.removeChild(L));
+  STRIKES.map(s => s.classList.remove("strikeout"));
+  word.map(L => createLetter(L));
 }
 
 function generateNewWord() {
@@ -54,28 +65,64 @@ function generateNewWord() {
 }
 
 function createLetter(L) {
-  const NEW_LETTER = document.createElement("span");
-  const LETTER_DISPLAY = document.createElement("p");
+  const NEW_LETTER = document.createElement("div");
+  const LETTER_DISPLAY = document.createElement("span");
   const LETTER_VAL = document.createTextNode(L);
   NEW_LETTER.classList.add("letter");
   LETTER_DISPLAY.classList.add("letter-display");
   LETTER_DISPLAY.appendChild(LETTER_VAL);
   NEW_LETTER.appendChild(LETTER_DISPLAY);
-  console.log(NEW_LETTER);
   renderLetter(NEW_LETTER);
 }
 
 function renderLetter(L) {
-  document.getElementById("word").appendChild(L);
+  WORD.appendChild(L);
 }
 
 function getKey(event) {
   const KEY =  event.target.id || String.fromCharCode(event.keyCode);
-  return KEY;
+  if (KEY.search(/[a-z]/i) >= 0) { return KEY.toUpperCase() };
+}
+
+function renderCorrectLetters(arr) {
+  arr.map((L, i) => {
+    if (arr[i] === true) {
+      WORD.children[i].children[0].classList.add("found-letter");
+      score++;
+    }
+  });
+}
+
+function failGuess() {
+  document.getElementById("hangman").children[strike].classList.add("strikeout");
+  strike++;
+}
+
+function checkScore() {
+  if (score === word.length) { endGame("WIN") }
+  if (strike === STRIKES.length) { endGame("LOSE") }
 }
 
 function takeGuess() {
   const KEY = getKey(event);
+  const FOUND_LETTERS = word.map(L => L === KEY);
+  
+  if (FOUND_LETTERS.indexOf(true) < 0) {
+    failGuess();
+    checkScore();
+  } else {
+    renderCorrectLetters(FOUND_LETTERS);
+    checkScore();
+  }
+}
+
+function endGame(WL) {
+  let bg = "";
+  if (WL === "WIN") { win++; bg="lightgreen" } else { loss++; bg="pink" };
+  document.getElementById("win-lose-screen").style.background = bg;
+  document.getElementById("result-display").innerHTML = `YOU ${WL}!`;
+  document.getElementById(WL).innerHTML = WL === "WIN" ? win : loss;
+  document.getElementById("win-lose-screen").style.display = "flex";
 }
 
 
@@ -83,7 +130,7 @@ function takeGuess() {
 // EVENT LISTENERS
 [...document.getElementsByClassName("incrementer")].map(i => i.addEventListener("click", increment));
 
-document.getElementById("start").addEventListener("click", startGame);
+[...document.getElementsByClassName("start")].map(b => b.addEventListener("click", startGame));
 
 ALL_KEYS.map(k => {
   k.innerHTML = k.id;
@@ -97,5 +144,5 @@ window.addEventListener("keypress", takeGuess);
 // PAGE LOAD
 window.onload = () => {
   renderLevel();
-  generateNewWord();
+  startGame();
 }

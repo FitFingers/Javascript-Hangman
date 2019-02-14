@@ -5,133 +5,31 @@
   user-select: none;
 }
 
-.clickable, .key, .button, .incrementer {
+.clickable {
   transition: opacity 180ms;
 }
 
-.clickable:hover, .key:hover, .button:hover, .incrementer:hover {
+.clickable:hover {
   opacity: 0.7;
 }
 
-#A {
-  grid-area: A;
+@mixin container {
+  box-shadow: 0 0 8px 0px rgba(0,0,0,0.3);
+  border-radius: 10px;
 }
 
-#B {
-  grid-area: B;
+@each $k in A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,Y,U,V,W,X,Y,Z,start {
+  ##{$k} { grid-area: $k; }
 }
 
-#C {
-  grid-area: C;
-}
 
-#D {
-  grid-area: D;
-}
-
-#E {
-  grid-area: E;
-}
-
-#F {
-  grid-area: F;
-}
-
-#G {
-  grid-area: G;
-}
-
-#H {
-  grid-area: H;
-}
-
-#I {
-  grid-area: I;
-}
-
-#J {
-  grid-area: J;
-}
-
-#K {
-  grid-area: K;
-}
-
-#L {
-  grid-area: L;
-}
-
-#M {
-  grid-area: M;
-}
-
-#N {
-  grid-area: N;
-}
-
-#O {
-  grid-area: O;
-}
-
-#P {
-  grid-area: P;
-}
-
-#Q {
-  grid-area: Q;
-}
-
-#R {
-  grid-area: R;
-}
-
-#S {
-  grid-area: S;
-}
-
-#T {
-  grid-area: T;
-}
-
-#Y {
-  grid-area: Y;
-}
-
-#U {
-  grid-area: U;
-}
-
-#V {
-  grid-area: V;
-}
-
-#W {
-  grid-area: W;
-}
-
-#X {
-  grid-area: X;
-}
-
-#Y {
-  grid-area: Y;
-}
-
-#Z {
-  grid-area: Z;
-}
-
-#start {
-  grid-area: start;
-}
 
 h1 {
   font-size: 56px;
 }
 
 #win-lose-screen {
-  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  @include container;
   background: lightgreen;
   display: none;
   flex-direction: column;
@@ -143,7 +41,7 @@ h1 {
   bottom: 20%;
   left: 10%;
   font-size: 48px;
-  box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 16px 2px rgba(0,0,0,0.3);
   z-index: 1;
 }
 
@@ -165,8 +63,7 @@ h3 {
 }
 
 #hangman {
-  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  @include container;
   background: lightblue;
   padding: 10px;
   height: 400px;
@@ -186,8 +83,7 @@ h3 {
 }
 
 #word {
-  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  @include container;
   background: pink;
   padding: 10px;
   min-height: 100px;
@@ -213,19 +109,22 @@ h3 {
 }
 
 #keyboard {
-  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  @include container;
   background: lightgreen;
   display: grid;
-  grid-template-areas: "Q Q . W W . E E . R R . T T . Y Y . U U . I I . O O . P P" ". A A . S S . D D . F F . G G . H H . J J . K K . L L . ." ". . Z Z . X X . C C . V V . B B . N N . M M . . . start start start start";
+  grid-template-areas:
+    "Q Q . W W . E E . R R . T T . Y Y . U U . I I . O O . P P"
+    ". A A . S S . D D . F F . G G . H H . J J . K K . L L . ."
+    ". . Z Z . X X . C C . V V . B B . N N . M M . . . start start start start";
   grid-gap: 5px;
   padding: 20px 20px 40px 20px;
   margin: 20px;
+  // width: 90vw;
   height: 24vh;
   font-size: 24px;
 }
 
-.key, .button {
+.key {
   background: black;
   display: flex;
   align-items: center;
@@ -238,13 +137,16 @@ h3 {
   cursor: pointer;
 }
 
+.button {
+  @extend .key;
+}
+
 .start {
   background: green;
 }
 
 #level-display {
-  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  @include container;
   background: yellow;
   display: flex;
   padding: 10px 20px;
@@ -264,4 +166,8 @@ h3 {
   flex: 1;
   margin: 10px;
   border-radius: 5px;
+}
+
+.key, .incrementer, .button {
+  @extend .clickable;
 }
