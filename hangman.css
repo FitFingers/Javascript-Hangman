@@ -1,0 +1,206 @@
+* {
+  margin: 10px auto;
+  text-align: center;
+  font-family: trebuchet ms, arial;
+  user-select: none;
+}
+
+#hangman {
+  background: lightblue;
+  height: 400px;
+  width: 300px;
+}
+
+.strike {
+  background: black;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.strikeout {
+  opacity: 1;
+}
+
+#word {
+  background: pink;
+  padding: 10px;
+  width: max-content;
+  font-size: 72px;
+}
+
+.letter {
+  background: blue;
+  display: inline-block;
+  width: 70px;
+  border-bottom: 10px solid black;
+}
+
+.letter-display {
+  opacity: 0.4;
+}
+
+#keyboard {
+  background: lightgreen;
+  display: grid;
+  grid-template-areas: "q q . w w . e e . r r . t t . y y . u u . i i . o o . p p" ". a a . s s . d d . f f . g g . h h . j j . k k . l l . ." ". . z z . x x . c c . v v . b b . n n . m m . . . start start start start";
+  grid-gap: 5px;
+  padding: 20px 20px 40px 20px;
+  margin: 20px;
+  height: 24vh;
+  font-size: 24px;
+}
+
+.key, .button {
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: thin solid white;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background 130ms;
+}
+
+.key:hover, .button:hover {
+  background: gray;
+}
+
+#start {
+  background: green;
+}
+
+#start:hover {
+  background: darkgreen;
+}
+
+#a {
+  grid-area: a;
+}
+
+#b {
+  grid-area: b;
+}
+
+#c {
+  grid-area: c;
+}
+
+#d {
+  grid-area: d;
+}
+
+#e {
+  grid-area: e;
+}
+
+#f {
+  grid-area: f;
+}
+
+#g {
+  grid-area: g;
+}
+
+#h {
+  grid-area: h;
+}
+
+#i {
+  grid-area: i;
+}
+
+#j {
+  grid-area: j;
+}
+
+#k {
+  grid-area: k;
+}
+
+#l {
+  grid-area: l;
+}
+
+#m {
+  grid-area: m;
+}
+
+#n {
+  grid-area: n;
+}
+
+#o {
+  grid-area: o;
+}
+
+#p {
+  grid-area: p;
+}
+
+#q {
+  grid-area: q;
+}
+
+#r {
+  grid-area: r;
+}
+
+#s {
+  grid-area: s;
+}
+
+#t {
+  grid-area: t;
+}
+
+#u {
+  grid-area: u;
+}
+
+#v {
+  grid-area: v;
+}
+
+#w {
+  grid-area: w;
+}
+
+#x {
+  grid-area: x;
+}
+
+#y {
+  grid-area: y;
+}
+
+#z {
+  grid-area: z;
+}
+
+#start {
+  grid-area: start;
+}
+
+#level-display {
+  background: yellow;
+  display: flex;
+  padding: 10px 20px;
+  width: 90vw;
+  font-size: 48px;
+}
+
+.incrementer {
+  background: orange;
+  flex: 1;
+  cursor: pointer;
+}
+
+#level {
+  background: white;
+  flex: 1;
+}
