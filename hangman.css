@@ -5,8 +5,170 @@
   user-select: none;
 }
 
+.clickable, .key, .button, .incrementer {
+  transition: opacity 180ms;
+}
+
+.clickable:hover, .key:hover, .button:hover, .incrementer:hover {
+  opacity: 0.7;
+}
+
+#A {
+  grid-area: A;
+}
+
+#B {
+  grid-area: B;
+}
+
+#C {
+  grid-area: C;
+}
+
+#D {
+  grid-area: D;
+}
+
+#E {
+  grid-area: E;
+}
+
+#F {
+  grid-area: F;
+}
+
+#G {
+  grid-area: G;
+}
+
+#H {
+  grid-area: H;
+}
+
+#I {
+  grid-area: I;
+}
+
+#J {
+  grid-area: J;
+}
+
+#K {
+  grid-area: K;
+}
+
+#L {
+  grid-area: L;
+}
+
+#M {
+  grid-area: M;
+}
+
+#N {
+  grid-area: N;
+}
+
+#O {
+  grid-area: O;
+}
+
+#P {
+  grid-area: P;
+}
+
+#Q {
+  grid-area: Q;
+}
+
+#R {
+  grid-area: R;
+}
+
+#S {
+  grid-area: S;
+}
+
+#T {
+  grid-area: T;
+}
+
+#Y {
+  grid-area: Y;
+}
+
+#U {
+  grid-area: U;
+}
+
+#V {
+  grid-area: V;
+}
+
+#W {
+  grid-area: W;
+}
+
+#X {
+  grid-area: X;
+}
+
+#Y {
+  grid-area: Y;
+}
+
+#Z {
+  grid-area: Z;
+}
+
+#start {
+  grid-area: start;
+}
+
+h1 {
+  font-size: 56px;
+}
+
+#win-lose-screen {
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background: lightgreen;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  bottom: 20%;
+  left: 10%;
+  font-size: 48px;
+  box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+#scoreboard {
+  background: white;
+  display: flex;
+  width: 90%;
+  border-radius: 10px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+#play-again {
+  max-height: 120px;
+  max-width: 300px;
+  font-size: 48px;
+}
+
 #hangman {
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   background: lightblue;
+  padding: 10px;
   height: 400px;
   width: 300px;
 }
@@ -24,27 +186,38 @@
 }
 
 #word {
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   background: pink;
   padding: 10px;
+  min-height: 100px;
+  min-width: 280px;
+  height: auto;
   width: max-content;
   font-size: 72px;
 }
 
 .letter {
-  background: blue;
   display: inline-block;
+  margin: 10px;
   width: 70px;
-  border-bottom: 10px solid black;
+  border-bottom: 8px solid black;
 }
 
 .letter-display {
-  opacity: 0.4;
+  opacity: 0;
+}
+
+.found-letter {
+  opacity: 1;
 }
 
 #keyboard {
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   background: lightgreen;
   display: grid;
-  grid-template-areas: "q q . w w . e e . r r . t t . y y . u u . i i . o o . p p" ". a a . s s . d d . f f . g g . h h . j j . k k . l l . ." ". . z z . x x . c c . v v . b b . n n . m m . . . start start start start";
+  grid-template-areas: "Q Q . W W . E E . R R . T T . Y Y . U U . I I . O O . P P" ". A A . S S . D D . F F . G G . H H . J J . K K . L L . ." ". . Z Z . X X . C C . V V . B B . N N . M M . . . start start start start";
   grid-gap: 5px;
   padding: 20px 20px 40px 20px;
   margin: 20px;
@@ -63,130 +236,15 @@
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  transition: background 130ms;
 }
 
-.key:hover, .button:hover {
-  background: gray;
-}
-
-#start {
+.start {
   background: green;
 }
 
-#start:hover {
-  background: darkgreen;
-}
-
-#a {
-  grid-area: a;
-}
-
-#b {
-  grid-area: b;
-}
-
-#c {
-  grid-area: c;
-}
-
-#d {
-  grid-area: d;
-}
-
-#e {
-  grid-area: e;
-}
-
-#f {
-  grid-area: f;
-}
-
-#g {
-  grid-area: g;
-}
-
-#h {
-  grid-area: h;
-}
-
-#i {
-  grid-area: i;
-}
-
-#j {
-  grid-area: j;
-}
-
-#k {
-  grid-area: k;
-}
-
-#l {
-  grid-area: l;
-}
-
-#m {
-  grid-area: m;
-}
-
-#n {
-  grid-area: n;
-}
-
-#o {
-  grid-area: o;
-}
-
-#p {
-  grid-area: p;
-}
-
-#q {
-  grid-area: q;
-}
-
-#r {
-  grid-area: r;
-}
-
-#s {
-  grid-area: s;
-}
-
-#t {
-  grid-area: t;
-}
-
-#u {
-  grid-area: u;
-}
-
-#v {
-  grid-area: v;
-}
-
-#w {
-  grid-area: w;
-}
-
-#x {
-  grid-area: x;
-}
-
-#y {
-  grid-area: y;
-}
-
-#z {
-  grid-area: z;
-}
-
-#start {
-  grid-area: start;
-}
-
 #level-display {
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
   background: yellow;
   display: flex;
   padding: 10px 20px;
@@ -197,10 +255,13 @@
 .incrementer {
   background: orange;
   flex: 1;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 #level {
   background: white;
   flex: 1;
+  margin: 10px;
+  border-radius: 5px;
 }
