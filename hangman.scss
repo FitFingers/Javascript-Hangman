@@ -137,6 +137,10 @@ h3 {
   cursor: pointer;
 }
 
+.fade, .fade:hover {
+  opacity: 0.4;
+}
+
 .button {
   @extend .key;
 }
