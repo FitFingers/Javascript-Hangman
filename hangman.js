@@ -34,7 +34,8 @@ let level = 0,
     strike = 0,
     score = 0,
     win = 0,
-    loss = 0;
+    loss = 0,
+    guessedLetters = [];
 
 
 
@@ -50,16 +51,39 @@ function renderLevel() {
 }
 
 function startGame() {
+  ALL_KEYS.map(k => k.classList.remove("fade"));
   document.getElementById("win-lose-screen").style.display = "none";
-  word = generateNewWord().split("");
-  strike = 0;
-  score = 0;
   [...WORD.children].map(L => WORD.removeChild(L));
   STRIKES.map(s => s.classList.remove("strikeout"));
+  guessedLetters = [];
+  strike = 0;
+  score = 0;
+  // generateNewWord(handleNewWord);
+  word = generateWordFromObject().split("");
   word.map(L => createLetter(L));
 }
 
-function generateNewWord() {
+// API KEY GOES AT THE END OF THIS LINK
+// REQ.open("GET", "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun%2C%20verb%2C%20adverb%2C%20adjective&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&api_key=YOURAPIKEY", true);
+// function generateNewWord(callback) {
+//   const REQ = new XMLHttpRequest();
+//   REQ.onload = () => {
+//     if (REQ.readyState === 4 && REQ.status === 200) {
+//       callback(JSON.parse(REQ.response));
+//     }
+//   };
+//   REQ.open('GET', "https://www.dictionaryapi.com/api/v3/references/collegiate/json/voluminous?key=48d4523e-8f43-459c-a957-62635467a4f3", true);
+//   REQ.send();
+// }
+
+// function handleNewWord(result) {
+//   word = (result[0].meta.id).toUpperCase().split("");
+//   word.map(L => createLetter(L));
+// }
+
+
+
+function generateWordFromObject() {
   const NEW_WORD = WORDS[level][Math.floor(Math.random()*WORDS[level].length)];
   return NEW_WORD;
 }
@@ -80,7 +104,7 @@ function renderLetter(L) {
 }
 
 function getKey(event) {
-  const KEY =  event.target.id || String.fromCharCode(event.keyCode);
+  const KEY = event.keyCode !== 32 ? event.target.id || String.fromCharCode(event.keyCode) : null;
   if (KEY.search(/[a-z]/i) >= 0) { return KEY.toUpperCase() };
 }
 
@@ -103,16 +127,24 @@ function checkScore() {
   if (strike === STRIKES.length) { endGame("LOSE") }
 }
 
+function blockLetter(L) {
+  guessedLetters.push(L);
+  document.getElementById(L).classList.add("fade");
+}
+
 function takeGuess() {
   const KEY = getKey(event);
   const FOUND_LETTERS = word.map(L => L === KEY);
-  
-  if (FOUND_LETTERS.indexOf(true) < 0) {
-    failGuess();
-    checkScore();
-  } else {
-    renderCorrectLetters(FOUND_LETTERS);
-    checkScore();
+
+  if (!guessedLetters.includes(KEY)) {
+    if (FOUND_LETTERS.indexOf(true) < 0) {
+      failGuess();
+      checkScore();
+    } else {
+      renderCorrectLetters(FOUND_LETTERS);
+      checkScore();
+    }
+    blockLetter(KEY);
   }
 }
 
@@ -146,3 +178,6 @@ window.onload = () => {
   renderLevel();
   startGame();
 }
+
+
+//Strange bug where on a win, if "enter" is pressed then wins++, but sometimes win-lose-screen will turn to "you lose!".
