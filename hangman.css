@@ -238,6 +238,10 @@ h3 {
   cursor: pointer;
 }
 
+.fade, .fade:hover {
+  opacity: 0.4;
+}
+
 .start {
   background: green;
 }
