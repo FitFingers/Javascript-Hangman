@@ -4,29 +4,10 @@ const STRIKES = [...document.getElementsByClassName("strike")];
 const WORD = document.getElementById("word");
 const LEVELS = {0: "Easy", 1: "Medium", 2: "Hard", 3: "Very Hard"};
 const WORDS = {
-  0: [
-    "CAT",
-    "DOG",
-    "DOOR",
-    "BUGS",
-    "BED"
-  ],
-  1: [
-    "BOTTLE",
-    "DWARF",
-    "FRIENDS",
-    "FRISBEE",
-    "HORSES"
-  ],
-  2: [
-    "UNIVERSITY",
-    "COMPONENT",
-    "CELEBRATE"
-  ],
-  3: [
-    "SMORGASBORD",
-    "DISCOMBOBULATE"
-  ]
+  0: [],
+  1: [],
+  2: [],
+  3: []
 };
 
 let level = 0,
@@ -58,34 +39,51 @@ function startGame() {
   guessedLetters = [];
   strike = 0;
   score = 0;
-  // generateNewWord(handleNewWord);
   word = generateWordFromObject().split("");
   word.map(L => createLetter(L));
 }
 
-// API KEY GOES AT THE END OF THIS LINK
-// REQ.open("GET", "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun%2C%20verb%2C%20adverb%2C%20adjective&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=4&maxLength=-1&api_key=YOURAPIKEY", true);
-// function generateNewWord(callback) {
-//   const REQ = new XMLHttpRequest();
-//   REQ.onload = () => {
-//     if (REQ.readyState === 4 && REQ.status === 200) {
-//       callback(JSON.parse(REQ.response));
-//     }
-//   };
-//   REQ.open('GET', "https://www.dictionaryapi.com/api/v3/references/collegiate/json/voluminous?key=48d4523e-8f43-459c-a957-62635467a4f3", true);
-//   REQ.send();
+// function generateWordObject() {
+//   WORDS[0] = ["ABCDEFGHIJKL"];
 // }
+async function generateWordObject() {
+  await fetch("https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun%2C%20verb%2C%20adjective%2C%20adverb&minCorpusCount=7000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=12&sortBy=count&sortOrder=asc&limit=28&api_key=08ad30bb163d00233f00804bbb10aef5770f4357d4c5f2051")
+    .then((response) => response.json())
+    .then((json) => sortWordObject(json));
+}
 
-// function handleNewWord(result) {
-//   word = (result[0].meta.id).toUpperCase().split("");
-//   word.map(L => createLetter(L));
-// }
-
-
+function sortWordObject(result) {
+  result.map(R => {
+    const W = R.word.toUpperCase(),
+          L = R.word.length;
+    L <= 5 ? WORDS[0].push(W) :
+    L <= 7 ? WORDS[1].push(W) :
+    L <= 9 ? WORDS[2].push(W) :
+    WORDS[3].push(W);
+  });
+}
 
 function generateWordFromObject() {
   const NEW_WORD = WORDS[level][Math.floor(Math.random()*WORDS[level].length)];
-  return NEW_WORD;
+  if (NEW_WORD.search(/\W|_/g) >= 0) {
+    removeWordFromObject(level, NEW_WORD);
+    word = "";
+    startGame();
+  } else {
+    return NEW_WORD;
+  }
+}
+
+function removeWordFromObject(wordLevel, oldWord) {
+  const INDEX = WORDS[wordLevel].indexOf(oldWord);
+  WORDS[wordLevel] = WORDS[wordLevel].slice(0, INDEX).concat(WORDS[wordLevel].slice(INDEX+1));
+  checkWordObject();
+}
+
+function checkWordObject() {
+  if (WORDS[level].length <= 1) {
+    generateWordObject();
+  }
 }
 
 function createLetter(L) {
@@ -133,8 +131,8 @@ function blockLetter(L) {
 }
 
 function takeGuess() {
-  const KEY = getKey(event);
-  const FOUND_LETTERS = word.map(L => L === KEY);
+  const KEY = getKey(event),
+        FOUND_LETTERS = word.map(L => L === KEY);
 
   if (!guessedLetters.includes(KEY)) {
     if (FOUND_LETTERS.indexOf(true) < 0) {
@@ -154,7 +152,15 @@ function endGame(WL) {
   document.getElementById("win-lose-screen").style.background = bg;
   document.getElementById("result-display").innerHTML = `YOU ${WL}!`;
   document.getElementById(WL).innerHTML = WL === "WIN" ? win : loss;
+  document.getElementById("show-word").innerHTML = word.join("");
   document.getElementById("win-lose-screen").style.display = "flex";
+  removeWordFromObject(level, word.join(""));
+}
+
+async function pageLoad() {
+  await generateWordObject(sortWordObject);
+  renderLevel();
+  startGame();
 }
 
 
@@ -174,10 +180,7 @@ window.addEventListener("keypress", takeGuess);
 
 
 // PAGE LOAD
-window.onload = () => {
-  renderLevel();
-  startGame();
-}
+window.onload = pageLoad();
 
 
 //Strange bug where on a win, if "enter" is pressed then wins++, but sometimes win-lose-screen will turn to "you lose!".
