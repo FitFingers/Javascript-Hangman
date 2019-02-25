@@ -125,8 +125,25 @@
   grid-area: start;
 }
 
+body {
+  background-image: url("https://i.ibb.co/4RPHdZC/pexels-photo-172278.jpg");
+  background-size: cover;
+  max-width: 960px;
+}
+
+#title {
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background: rgba(76, 39, 25, 0.75);
+  padding: 6px 12px;
+  margin-left: 18px;
+  width: min-content;
+}
+
 h1 {
   font-size: 56px;
+  color: white;
+  color: #EDE580;
 }
 
 #win-lose-screen {
@@ -165,11 +182,8 @@ h3 {
 }
 
 #hangman {
-  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background: lightblue;
   padding: 10px;
-  height: 400px;
+  height: auto;
   width: 300px;
 }
 
@@ -188,20 +202,22 @@ h3 {
 #word {
   box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background: pink;
+  background: rgba(76, 39, 25, 0.75);
   padding: 10px;
+  margin: auto;
   min-height: 100px;
   min-width: 280px;
   height: auto;
   width: max-content;
   font-size: 72px;
+  color: #EDE580;
 }
 
 .letter {
   display: inline-block;
-  margin: 10px;
+  margin: 4px;
   width: 70px;
-  border-bottom: 8px solid black;
+  border-bottom: 8px solid #EDE580;
 }
 
 .letter-display {
@@ -215,26 +231,27 @@ h3 {
 #keyboard {
   box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background: lightgreen;
+  background: rgba(76, 39, 25, 0.75);
   display: grid;
   grid-template-areas: "Q Q . W W . E E . R R . T T . Y Y . U U . I I . O O . P P" ". A A . S S . D D . F F . G G . H H . J J . K K . L L . ." ". . Z Z . X X . C C . V V . B B . N N . M M . . . start start start start";
   grid-gap: 5px;
   padding: 20px 20px 40px 20px;
   margin: 20px;
-  height: 24vh;
+  min-height: 22vh;
   font-size: 24px;
 }
 
 .key, .button {
-  background: black;
+  background: rgba(203, 121, 58, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  border: thin solid white;
+  border: thin solid #EDE580;
   border-radius: 5px;
-  color: white;
+  font-weight: bold;
+  color: #EDE580;
   cursor: pointer;
 }
 
@@ -243,29 +260,32 @@ h3 {
 }
 
 .start {
-  background: green;
+  background: #EDE580;
+  color: rgba(76, 39, 25, 0.75);
 }
 
 #level-display {
   box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background: yellow;
+  background: rgba(76, 39, 25, 0.75);
   display: flex;
   padding: 10px 20px;
-  width: 90vw;
+  width: 90%;
   font-size: 48px;
 }
 
 .incrementer {
-  background: orange;
+  background: #EDE580;
   flex: 1;
   border-radius: 5px;
+  color: rgba(76, 39, 25, 0.75);
   cursor: pointer;
 }
 
 #level {
-  background: white;
+  background: rgba(203, 121, 58, 0.45);
   flex: 1;
   margin: 10px;
   border-radius: 5px;
+  color: #EDE580;
 }
