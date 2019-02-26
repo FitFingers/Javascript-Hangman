@@ -172,7 +172,7 @@ a {
   background-repeat: no-repeat;
   position: absolute;
   display: none;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr) 56px;
   top: -12px;
   left: 0;
   right: 0;
@@ -184,6 +184,10 @@ a {
   z-index: 1;
 }
 
+#result-display {
+  margin-top: -6px;
+}
+
 h3 {
   display: inline;
   height: min-content;
@@ -193,16 +197,13 @@ h3 {
 #play-again {
   box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  margin-top: -16px;
-  max-height: 70px;
+  height: auto;
   max-width: 300px;
-  font-size: 48px;
+  font-size: 42px;
 }
 
 #scoreboard {
-  margin-top: -18px;
   width: 70%;
-  height: min-content;
   border-radius: 10px;
   color: rgba(0, 0, 0, 0.85);
 }
