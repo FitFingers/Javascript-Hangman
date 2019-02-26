@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="A simple Hangman game made from JavaScript. Random words are generated from an API meaning the fun is endless.">
   <link rel="icon" href="https://i.ibb.co/tsSSpHy/logo-small-deep-purple-dust.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="hangman.css" rel="stylesheet" type="text/css">
   <link href="stylesheet.css" rel="stylesheet" type="text/css">
 </head>
@@ -77,9 +78,13 @@
     </div>
 
     <div id="level-display">
-      <div id="decrement" class="incrementer">-</div>
+      <div id="decrement" class="incrementer">
+        <i class="fas fa-chevron-left"></i>
+      </div>
       <div id="level"></div>
-      <div id="increment" class="incrementer">+</div>
+      <div id="increment" class="incrementer">
+        <i class="fas fa-chevron-right"></i>
+      </div>
     </div>
 
   </div>
