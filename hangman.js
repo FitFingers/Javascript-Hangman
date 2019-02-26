@@ -147,10 +147,7 @@ function takeGuess() {
 }
 
 function endGame(WL) {
-  let bg = "";
-  if (WL === "WIN") { win++; bg="lightgreen" } else { loss++; bg="pink" };
-  document.getElementById("win-lose-screen").style.background = bg;
-  document.getElementById("result-display").innerHTML = `YOU ${WL}!`;
+  document.getElementById("result-display").innerHTML = `YOU ${WL}.`;
   document.getElementById(WL).innerHTML = WL === "WIN" ? win : loss;
   document.getElementById("show-word").innerHTML = word.join("");
   document.getElementById("win-lose-screen").style.display = "flex";
@@ -183,4 +180,8 @@ window.addEventListener("keypress", takeGuess);
 window.onload = pageLoad();
 
 
-//Strange bug where on a win, if "enter" is pressed then wins++, but sometimes win-lose-screen will turn to "you lose!".
+// BUG: on a win, sometimes if "enter" is pressed then wins++, but sometimes win-lose-screen will turn to "you lose!".
+
+//NEXT FEATURE: Draw and animate the hangman!
+
+// NEXT FEATURE: Figure out how to hide word and WORDS from the console to prevent cheating. Use getters and setters, I suppose?
