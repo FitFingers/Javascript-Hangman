@@ -167,7 +167,7 @@ a {
 
 #win-lose-screen {
   background-image: url("https://i.ibb.co/3Mqs8Vp/blank-wooden-sign.png");
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   display: none;
   flex-direction: column;
@@ -175,31 +175,32 @@ a {
   justify-content: center;
   position: absolute;
   top: -32px;
-  right: 10%;
-  bottom: 15%;
-  left: 10%;
-  padding: 42px;
-  padding-top: 18%;
-  font-size: 48px;
+  right: 26%;
+  bottom: 38%;
+  left: 26%;
+  padding: 62px 42px;
+  padding-top: 8.5%;
+  font-size: 42px;
   color: rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
 
 h3 {
-  margin-top: 8.5%;
+  margin-top: 5%;
   font-size: 32px;
 }
 
 #play-again {
   box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  margin-top: 8.5%;
-  max-height: 100px;
+  margin-top: 4.8%;
+  max-height: 70px;
   max-width: 300px;
   font-size: 48px;
 }
 
 #scoreboard {
+  background: white;
   display: flex;
   width: 70%;
   border-radius: 10px;
