@@ -144,41 +144,51 @@ h1 {
   font-size: 56px;
   color: white;
   color: #EDE580;
+  letter-spacing: 0.2em;
+  transform: scale(1.3, 1);
+  transform-origin: top left;
 }
 
 #win-lose-screen {
-  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background: lightgreen;
+  background-image: url("https://i.ibb.co/3Mqs8Vp/blank-wooden-sign.png");
+  background-size: cover;
+  background-repeat: no-repeat;
   display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 20%;
+  top: -32px;
   right: 10%;
-  bottom: 20%;
+  bottom: 15%;
   left: 10%;
+  padding: 42px;
+  padding-top: 18%;
   font-size: 48px;
-  box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.7);
   z-index: 1;
 }
 
-#scoreboard {
-  background: white;
-  display: flex;
-  width: 90%;
-  border-radius: 10px;
-}
-
 h3 {
+  margin-top: 8.5%;
   font-size: 32px;
 }
 
 #play-again {
-  max-height: 120px;
+  box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin-top: 8.5%;
+  max-height: 100px;
   max-width: 300px;
   font-size: 48px;
+}
+
+#scoreboard {
+  display: flex;
+  width: 70%;
+  border-radius: 10px;
+  color: #EDE580;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 #hangman {
@@ -235,7 +245,7 @@ h3 {
   display: grid;
   grid-template-areas: "Q Q . W W . E E . R R . T T . Y Y . U U . I I . O O . P P" ". A A . S S . D D . F F . G G . H H . J J . K K . L L . ." ". . Z Z . X X . C C . V V . B B . N N . M M . . . start start start start";
   grid-gap: 5px;
-  padding: 20px 20px 40px 20px;
+  padding: 20px;
   margin: 20px;
   min-height: 22vh;
   font-size: 24px;
@@ -246,11 +256,12 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: auto;
   width: 100%;
   height: 100%;
   border: thin solid #EDE580;
   border-radius: 5px;
-  font-weight: bold;
+  font-size: 28px;
   color: #EDE580;
   cursor: pointer;
 }
