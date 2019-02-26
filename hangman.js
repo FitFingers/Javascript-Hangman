@@ -44,7 +44,7 @@ function startGame() {
 }
 
 // function generateWordObject() {
-//   WORDS[0] = ["ABCDEFGHIJKL"];
+//   WORDS[0] = ["CAT"];
 // }
 async function generateWordObject() {
   await fetch("https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun%2C%20verb%2C%20adjective%2C%20adverb&minCorpusCount=7000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=12&sortBy=count&sortOrder=asc&limit=28&api_key=08ad30bb163d00233f00804bbb10aef5770f4357d4c5f2051")
@@ -150,7 +150,7 @@ function endGame(WL) {
   document.getElementById("result-display").innerHTML = `YOU ${WL}.`;
   document.getElementById(WL).innerHTML = WL === "WIN" ? win : loss;
   document.getElementById("show-word").innerHTML = word.join("");
-  document.getElementById("win-lose-screen").style.display = "flex";
+  document.getElementById("win-lose-screen").style.display = "grid";
   removeWordFromObject(level, word.join(""));
 }
 
