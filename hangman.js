@@ -43,14 +43,14 @@ function startGame() {
   word.map(L => createLetter(L));
 }
 
-// function generateWordObject() {
-//   WORDS[0] = ["CAT"];
-// }
-async function generateWordObject() {
-  await fetch("https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun%2C%20verb%2C%20adjective%2C%20adverb&minCorpusCount=7000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=12&sortBy=count&sortOrder=asc&limit=28&api_key=08ad30bb163d00233f00804bbb10aef5770f4357d4c5f2051")
-    .then((response) => response.json())
-    .then((json) => sortWordObject(json));
+function generateWordObject() {
+  WORDS[0] = ["CAT"];
 }
+// async function generateWordObject() {
+//   await fetch("https://api.wordnik.com/v4/words.json/randomWords?hasDictionaryDef=true&includePartOfSpeech=noun%2C%20verb%2C%20adjective%2C%20adverb&minCorpusCount=25000&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=12&sortBy=count&sortOrder=asc&limit=28&api_key=08ad30bb163d00233f00804bbb10aef5770f4357d4c5f2051")
+//     .then((response) => response.json())
+//     .then((json) => sortWordObject(json));
+// }
 
 function sortWordObject(result) {
   result.map(R => {
