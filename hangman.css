@@ -138,6 +138,8 @@ body {
   padding: 6px 12px;
   margin-left: 18px;
   width: min-content;
+  transform: scaleX(1.25);
+  transform-origin: top left;
 }
 
 h1 {
@@ -145,8 +147,6 @@ h1 {
   color: white;
   color: #EDE580;
   letter-spacing: 0.2em;
-  transform: scale(1.3, 1);
-  transform-origin: top left;
 }
 
 #win-lose-screen {
