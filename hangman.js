@@ -147,6 +147,7 @@ function takeGuess() {
 }
 
 function endGame(WL) {
+  WL === "WIN" ? win++ : loss++;
   document.getElementById("result-display").innerHTML = `YOU ${WL}.`;
   document.getElementById(WL).innerHTML = WL === "WIN" ? win : loss;
   document.getElementById("show-word").innerHTML = word.join("");
