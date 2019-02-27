@@ -102,13 +102,19 @@
     WORD.style.transform = "scale(1)";
     WORD.style.margin = "auto";
   }
+  
+  function randomLetter() {
+    return String.fromCharCode(Math.floor(Math.random()*26 + 65));
+  }
 
   function createLetter(L) {
-    const NEW_LETTER = document.createElement("div");
-    const LETTER_DISPLAY = document.createElement("span");
+    const NEW_LETTER = document.createElement("div"),
+          LETTER_DISPLAY = document.createElement("span"),
+          LETTER_VALUE = document.createTextNode(randomLetter());
     NEW_LETTER.classList.add("letter");
     LETTER_DISPLAY.classList.add("letter-display");
     NEW_LETTER.appendChild(LETTER_DISPLAY);
+    LETTER_DISPLAY.appendChild(LETTER_VALUE);
     WORD.appendChild(NEW_LETTER);
   }
 
