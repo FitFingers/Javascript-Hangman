@@ -306,7 +306,7 @@ h3 {
 .incrementer {
   background: #EDE580;
   flex: 1;
-  align-items: center;
+  align-self: center;
   border-radius: 5px;
   font-size: 36px;
   color: rgba(76, 39, 25, 0.75);
