@@ -232,10 +232,11 @@ h3 {
   background: rgba(76, 39, 25, 0.75);
   padding: 10px;
   margin: auto;
-  min-height: 100px;
   min-width: 280px;
-  height: auto;
+  min-height: 100px;
+  height: min-content;
   width: max-content;
+  transform-origin: top left;
   font-size: 72px;
   color: #EDE580;
 }
@@ -298,7 +299,7 @@ h3 {
   background: rgba(76, 39, 25, 0.75);
   display: flex;
   padding: 10px 20px;
-  width: 90%;
+  margin: 20px;
   font-size: 48px;
 }
 
@@ -318,4 +319,54 @@ h3 {
   margin: 10px;
   border-radius: 5px;
   color: #EDE580;
+}
+
+@media only screen and (max-width: 700px) {
+  a {
+    height: 96px;
+  }
+  a #james-hooper-logo {
+    background-image: url("https://i.ibb.co/ssZnDk4/logo-small-deep-purple-white.png");
+    background-position: top right;
+    margin-top: 0;
+    width: 100px;
+  }
+}
+@media only screen and (max-width: 580px) {
+  h1 {
+    letter-spacing: 0.01em;
+  }
+}
+@media only screen and (max-width: 490px) {
+  h1 {
+    font-size: 26px;
+    letter-spacing: 0.025em;
+  }
+
+  a {
+    height: 62px;
+  }
+  a #james-hooper-logo {
+    width: 62px;
+    height: 62px;
+  }
+
+  #word {
+    min-height: 68px;
+    font-size: 44px;
+  }
+
+  .letter {
+    width: 20px;
+  }
+
+  #keyboard {
+    grid-gap: 8px;
+    grid-template-areas: "A B C D E F G H" "I J K L M N O P" "Q R S T U V W X" "start start start start start start Y Z";
+  }
+
+  #level-display {
+    margin: 20px;
+    width: auto;
+  }
 }
