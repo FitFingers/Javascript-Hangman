@@ -1,12 +1,12 @@
 <head>
-  <title>Guess The Word To Escape The Noose | JavaScript Hangman</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <meta name="description" content="A simple Hangman game made from JavaScript. Random words are generated from an API meaning the fun is endless.">
-  <link rel="icon" href="https://i.ibb.co/tsSSpHy/logo-small-deep-purple-dust.png">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-  <link href="hangman.css" rel="stylesheet" type="text/css">
-  <link href="stylesheet.css" rel="stylesheet" type="text/css">
+<title>Guess The Word To Escape The Noose | JavaScript Hangman</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="description" content="A simple Hangman game made from JavaScript. Random words are generated from an API meaning the fun is endless.">
+<link rel="icon" href="https://i.ibb.co/tsSSpHy/logo-small-deep-purple-dust.png">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link href="hangman.css" rel="stylesheet" type="text/css">
+<link href="stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 
 
@@ -24,6 +24,8 @@
       </a>
     </header>
 
+
+
     <div id="win-lose-screen">
       <h2 id="result-display"></h2>
       <h3 id="show-word"></h3>
@@ -34,18 +36,72 @@
       </div>
     </div>
 
-    <div id="hangman">
-      <div class="strike"></div>
-      <div class="strike"></div>
-      <div class="strike"></div>
-      <div class="strike"></div>
-      <div class="strike"></div>
-      <div class="strike"></div>
-      <div class="strike"></div>
+
+
+    <div id="hangman-display">
+      <svg id="hangman" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" viewBox="0 0 453 625" width="227" height="313">
+        <defs>
+          <path id="hm-main" class="hm-frame" d="M74.77 22.99L74.77 41.99L75.77 57.99L77.77 75.99L77.77 148.99L77.77 163.99L77.77 178.99L76.77 194.99L76.77 210.99L75.77 227.99L75.77 243.99L75.77 258.99L75.77 273.99L75.77 289.99L76.77 304.99L76.77 321.99L73.77 335.99L73.77 351.99L73.77 366.99L73.77 381.99L74.77 399.99L76.77 416.99L77.77 434.99L77.77 449.99L77.77 468.99L77.77 495.99L77.77 511.99L77.77 528.99L75.77 543.99L75.77 558.99L75.77 573.99L73.77 588.99L72.77 603.99"></path>
+          <path id="hm-base" class="hm-frame" d="M15.77 607.99L30.77 607.99L46.77 607.99L61.77 607.99L79.77 607.99L97.77 607.99L113.77 606.99L130.77 606.99L147.77 606.99L164.77 606.99L179.77 606.99L196.77 606.99L211.77 605.99L227.77 605.99L243.77 605.99L258.77 605.99L275.77 605.99L290.77 605.99L305.77 605.99L322.77 605.99L338.77 605.99L354.77 605.99L372.77 605.99L387.77 605.99L403.77 604.99L417.77 601.99L433.77 601.99"></path>
+          <path id="hm-top" class="hm-frame" d="M59.77 22.99L74.77 22.99L90.77 18.99L106.77 17.99L122.77 17.99L138.77 16.99L153.77 16.99L169.77 16.99L185.77 16.99L201.77 16.99L222.77 16.99L237.77 16.99L254.77 16.99L275.77 16.99L290.77 16.99L306.77 16.99L321.77 18.99L336.77 19.99L352.77 19.99L369.77 19.99L384.77 19.99L399.77 18.99"></path>
+          <path id="hm-bracket" class="hm-frame" d="M77.77 98.99L88.77 88.99L100.77 80.99L110.77 69.99L123.77 60.99L133.77 48.99L143.77 37.99L155.77 27.99L165.77 16.99"></path>
+          <path id="hm-rope" class="strike" d="M349.77 18.99L348.77 33.99L348.77 48.99L349.77 64.99L351.77 79.99"></path>
+          <path id="hm-head" class="strike" d="M350.77 76.99L335.77 76.99L321.77 81.99L308.77 92.99L299.77 103.99L298.77 118.99L298.77 134.99L301.77 149.99L312.77 158.99L326.77 166.99L339.77 172.99L355.77 174.99L368.77 168.99L379.77 159.99L389.77 148.99L397.77 135.99L399.77 120.99L399.77 105.99L394.77 91.99L382.77 82.99L368.77 76.99L353.77 73.99"></path>
+          <path id="hm-body" class="strike" d="M351.77 174.99L351.77 189.99L351.77 205.99L351.77 221.99L351.77 237.99L351.77 252.99L351.77 267.99L352.77 283.99L352.77 299.99L351.77 314.99L350.77 329.99L349.77 344.99"></path>
+          <path id="hm-larm" class="strike" d="M353.77 210.99L340.77 216.99L334.77 230.99L328.77 243.99L322.77 256.99L315.77 269.99L309.77 283.99L301.77 295.99L293.77 307.99"></path>
+          <path id="hm-rarm" class="strike" d="M352.77 213.99L364.77 222.99L369.77 238.99L376.77 251.99L383.77 265.99L391.77 278.99L397.77 291.99L401.77 305.99"></path>
+          <path id="hm-lleg" class="strike" d="M349.77 342.99L342.77 355.99L338.77 370.99L335.77 385.99L330.77 399.99L327.77 414.99L324.77 428.99L320.77 442.99L318.77 457.99"></path>
+          <path id="hm-rleg" class="strike" d="M350.77 344.99L356.77 357.99L365.77 369.99L370.77 383.99L374.77 397.99L379.77 424.99L379.77 439.99L380.77 454.99"></path>
+        </defs>
+
+        <g>
+          <g><g>
+            <use xlink:href="#hm-main" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+            </g></g>
+          <g><g>
+            <use xlink:href="#hm-base" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+            </g></g>
+          <g><g>
+            <use xlink:href="#hm-top" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+            </g></g>
+          <g><g>
+            <use xlink:href="#hm-bracket" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+            </g></g>
+
+<!--           <g id="swing-body" transform="translate(4, -30), rotate(5)"> -->
+          <g id="swing-body">
+            <g><g>
+              <use xlink:href="#hm-rope" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+              </g></g>
+            <g><g>
+              <use xlink:href="#hm-head" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+              </g></g>
+            <g><g>
+              <use xlink:href="#hm-body" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+              </g></g>
+            <g><g>
+              <use xlink:href="#hm-larm" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+              </g></g>
+            <g><g>
+              <use xlink:href="#hm-rarm" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+              </g></g>
+            <g><g>
+              <use xlink:href="#hm-lleg" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+              </g></g>
+            <g><g>
+              <use xlink:href="#hm-rleg" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="10" stroke-opacity="1"></use>
+              </g></g>
+          </g>
+        </g>
+      </svg>
     </div>
+
+
 
     <div id="word">
     </div>
+
+
 
     <div id="keyboard">
       <div id="A" class="key"></div>
@@ -77,6 +133,8 @@
       <div id="start" class="start button">Reset</div>
     </div>
 
+
+
     <div id="level-display">
       <div id="decrement" class="incrementer">
         <i class="fas fa-chevron-left"></i>
@@ -91,5 +149,5 @@
 
 
 
-  <script src="hangman.js" type="text/javascript"></script>
+    <script src="hangman.js" type="text/javascript"></script>
 </body>
