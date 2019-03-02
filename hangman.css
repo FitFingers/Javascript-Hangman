@@ -208,22 +208,35 @@ h3 {
   color: rgba(0, 0, 0, 0.85);
 }
 
-#hangman {
+#hangman-display {
   padding: 10px;
-  height: auto;
-  width: 300px;
+  width: min-content;
 }
 
-.strike {
-  background: black;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  opacity: 0.4;
-}
-
-.strikeout {
+.hm-line {
   opacity: 1;
+  fill-opacity: 0;
+  stroke: black;
+  stroke-width: 10;
+  stroke-opacity: 1;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: rotate(-5deg);
+    transform: translate(4, -30);
+  }
+  75% {
+    transform: rotate(5deg);
+    transform: translate(-4, 30);
+  }
+}
+#swing-body {
+  animation: 1800ms swing infinite cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 #word {
@@ -233,7 +246,6 @@ h3 {
   padding: 10px;
   margin: auto;
   min-width: 280px;
-  min-height: 100px;
   height: min-content;
   width: max-content;
   transform-origin: top left;
@@ -306,7 +318,7 @@ h3 {
 .incrementer {
   background: #EDE580;
   flex: 1;
-  align-self: center;
+  align-items: center;
   border-radius: 5px;
   font-size: 36px;
   color: rgba(76, 39, 25, 0.75);
@@ -352,7 +364,7 @@ h3 {
   }
 
   #word {
-    min-height: 68px;
+    min-height: min-content;
     font-size: 44px;
   }
 
