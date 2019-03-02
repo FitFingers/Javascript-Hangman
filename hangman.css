@@ -128,6 +128,7 @@
 body {
   background-image: url("https://i.ibb.co/4RPHdZC/pexels-photo-172278.jpg");
   background-size: cover;
+  min-width: 360px;
   max-width: 960px;
 }
 
@@ -148,7 +149,6 @@ header {
 
 h1 {
   font-size: 56px;
-  color: white;
   color: #EDE580;
   letter-spacing: 0.2em;
 }
@@ -174,11 +174,12 @@ a {
   display: none;
   grid-template-rows: repeat(4, 1fr) 56px;
   top: -12px;
-  left: 0;
-  right: 0;
+  left: -95px;
+  right: -95px;
   padding-top: 98px;
   width: 550px;
   height: 430px;
+  transform-origin: top center;
   font-size: 42px;
   color: rgba(0, 0, 0, 0.85);
   z-index: 1;
@@ -223,20 +224,18 @@ h3 {
 
 @keyframes swing {
   0% {
-    transform: rotate(0deg);
-    transform: translate(0, 0);
+    transform: rotate(-4deg);
   }
-  25% {
-    transform: rotate(-5deg);
-    transform: translate(4, -30);
+  50% {
+    transform: rotate(4deg);
   }
-  75% {
-    transform: rotate(5deg);
-    transform: translate(-4, 30);
+  100% {
+    transform: rotate(-3.95deg);
   }
 }
 #swing-body {
-  animation: 1800ms swing infinite cubic-bezier(0.42, 0, 0.58, 1);
+  transform-origin: 77.5% 3%;
+  animation: 3800ms swing infinite cubic-bezier(0.42, 0, 0.58, 1);
 }
 
 #word {
