@@ -5,6 +5,14 @@
   user-select: none;
 }
 
+@font-face {
+    font-family: 'durango_western_erodedregular';
+    src: url('../fonts/durango_western_eroded_demo-webfont.woff2') format('woff2'),
+         url('../fonts/d../urango_western_eroded_demo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .clickable, .key, .button, .incrementer {
   transition: opacity 180ms;
 }
@@ -126,7 +134,8 @@
 }
 
 body {
-  background-image: url("https://i.ibb.co/4RPHdZC/pexels-photo-172278.jpg");
+  background: #82614d;
+  background-image: url("../images/wooden-background.jpg");
   background-size: cover;
   min-width: 360px;
   max-width: 960px;
@@ -159,7 +168,7 @@ a {
 }
 
 #james-hooper-logo {
-  background-image: url("https://i.ibb.co/cC3GMB9/logo-large-white-2.png");
+  background-image: url("../images/logo-large-yellow.png");
   background-size: contain;
   background-repeat: no-repeat;
   height: 100px;
@@ -167,7 +176,7 @@ a {
 }
 
 #win-lose-screen {
-  background-image: url("https://i.ibb.co/HxQtxDH/blank-wooden-sign-1.png");
+  background-image: url("../images/blank-wooden-sign.png");
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
@@ -316,6 +325,7 @@ h3 {
 
 .incrementer {
   background: #EDE580;
+  display: flex;
   flex: 1;
   align-items: center;
   border-radius: 5px;
@@ -337,7 +347,7 @@ h3 {
     height: 96px;
   }
   a #james-hooper-logo {
-    background-image: url("https://i.ibb.co/ssZnDk4/logo-small-deep-purple-white.png");
+    background-image: url("../images/logo-small-yellow.png");
     background-position: top right;
     margin-top: 0;
     width: 100px;
