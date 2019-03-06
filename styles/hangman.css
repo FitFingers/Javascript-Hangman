@@ -160,6 +160,7 @@ h1 {
   font-size: 56px;
   color: #EDE580;
   letter-spacing: 0.2em;
+  margin-right: -13px;
 }
 
 a {
@@ -356,12 +357,14 @@ h3 {
 @media only screen and (max-width: 580px) {
   h1 {
     letter-spacing: 0.01em;
+    margin-right: -4px;
   }
 }
 @media only screen and (max-width: 490px) {
   h1 {
     font-size: 26px;
     letter-spacing: 0.025em;
+    margin-right: -2px;
   }
 
   a {
